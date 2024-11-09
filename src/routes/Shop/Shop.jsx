@@ -43,7 +43,7 @@ export default function Shop() {
       setData(
         Array.from({ length: 20 }, () => ({
           id: counter++,
-          name: 'Test product',
+          name: 'Test product ' + counter,
           imageUrl: testImage,
           category: 'test',
           price: '99',

@@ -1,0 +1,14 @@
+.top {
+  background-image: url('../../assets/top-background.jpg');
+  background-size: cover;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top h2 {
+  color: #fff;
+  text-align: center;
+  font-weight: 100;
+}

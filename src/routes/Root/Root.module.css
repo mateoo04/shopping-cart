@@ -1,0 +1,27 @@
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.navigation ul {
+  display: flex;
+  gap: 16px;
+  list-style-type: none;
+  padding-inline-start: 0;
+}
+
+.link {
+  color: #000;
+  text-decoration: none;
+}
+
+.basketIcon {
+  width: 26px;
+}
+
+.link:hover,
+.basketIcon:hover {
+  opacity: 0.8;
+}

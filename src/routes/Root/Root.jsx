@@ -1,0 +1,29 @@
+import { Outlet, Link } from 'react-router-dom';
+import ShoppingBasketIcon from '../../assets/shopping-basket.svg';
+import styles from './Root.module.css';
+
+export default function Root() {
+  return (
+    <>
+      <nav className={styles.navigation}>
+        <h1>Surge</h1>
+        <ul>
+          <li>
+            <Link className={styles.link} to={'/'}>
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link className={styles.link} to={'shop'}>
+              Shop
+            </Link>
+          </li>
+        </ul>
+        <Link to={'basket'}>
+          <img className={styles.basketIcon} src={ShoppingBasketIcon} alt='' />
+        </Link>
+      </nav>
+      <Outlet />
+    </>
+  );
+}

@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import Product from '../../components/Product/Product';
+import styles from './Shop.module.css';
+import testImage from '../../assets/test-image.jpg';
 
 export default function Shop() {
   const [data, setData] = useState([]);
@@ -34,20 +36,35 @@ export default function Shop() {
       }
     };
 
-    fetchData();
+    let counter = 0;
+
+    if (process.env.NODE_ENV === 'production') fetchData();
+    else {
+      setData(
+        Array.from({ length: 20 }, () => ({
+          id: counter++,
+          name: 'Test product',
+          imageUrl: testImage,
+          category: 'test',
+          price: '99',
+        }))
+      );
+    }
   }, []);
   return (
-    <>
-      {data.map((product) => {
-        return (
-          <Product
-            key={`product-${product.id}`}
-            imageUrl={product.imageUrl}
-            name={product.name}
-            price={product.price}
-          />
-        );
-      })}
-    </>
+    <div className={styles.shop}>
+      <div className={styles.productsContainer}>
+        {data.map((product) => {
+          return (
+            <Product
+              key={`product-${product.id}`}
+              imageUrl={product.imageUrl}
+              name={product.name}
+              price={product.price}
+            />
+          );
+        })}
+      </div>
+    </div>
   );
 }

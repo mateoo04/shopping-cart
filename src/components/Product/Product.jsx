@@ -1,24 +1,34 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import styles from './Product.module.css';
 
 export default function Product({ imageUrl, name, price }) {
   const [quantity, setQuantity] = useState(1);
 
   return (
-    <div>
+    <div className={styles.product}>
       <img src={imageUrl} alt={name} />
       <h3>{name}</h3>
       <p>{`${price}€`}</p>
-      <div>
+      <div className={styles.quantityPicker}>
         <button onClick={() => quantity > 0 && setQuantity(quantity - 1)}>
           -
         </button>
-        <input type='number' value={quantity} readOnly />
+        <input
+          type='number'
+          value={quantity}
+          onChange={(e) =>
+            (parseInt(e.target.value) >= 0 &&
+              parseInt(e.target.value) < 99 &&
+              setQuantity(parseInt(e.target.value))) ||
+            (e.target.value === '' && setQuantity(e.target.value))
+          }
+        />
         <button onClick={() => quantity < 99 && setQuantity(quantity + 1)}>
           +
         </button>
       </div>
-      <button>ADD TO BASKET</button>
+      <button className={styles.addToBasketButton}>ADD TO BASKET</button>
     </div>
   );
 }

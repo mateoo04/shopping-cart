@@ -1,0 +1,10 @@
+.productsContainer {
+  margin: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.productsContainer > * > img {
+  max-width: 200px;
+}

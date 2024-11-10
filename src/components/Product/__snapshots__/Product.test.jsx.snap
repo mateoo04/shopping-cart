@@ -2,7 +2,9 @@
 
 exports[`Product component > renders product correctly 1`] = `
 <div>
-  <div>
+  <div
+    class="_product_3c78d5"
+  >
     <img
       alt="Sony WH-10000"
       src="https://storage.googleapis.com/fir-auth-1c3bc.appspot.com/1692947383286-714WUJlhbLS._SL1500_.jpg"
@@ -13,12 +15,13 @@ exports[`Product component > renders product correctly 1`] = `
     <p>
       189€
     </p>
-    <div>
+    <div
+      class="_quantityPicker_3c78d5"
+    >
       <button>
         -
       </button>
       <input
-        readonly=""
         type="number"
         value="1"
       />
@@ -26,7 +29,9 @@ exports[`Product component > renders product correctly 1`] = `
         +
       </button>
     </div>
-    <button>
+    <button
+      class="_addToBasketButton_3c78d5"
+    >
       ADD TO BASKET
     </button>
   </div>

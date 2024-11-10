@@ -2,9 +2,12 @@ import { useEffect, useState } from 'react';
 import Product from '../../components/Product/Product';
 import styles from './Shop.module.css';
 import testImage from '../../assets/test-image.jpg';
+import PropTypes from 'prop-types';
 
-export default function Shop() {
+export default function Shop({ addToBasket }) {
   const [data, setData] = useState([]);
+
+  console.log(data);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,6 +41,7 @@ export default function Shop() {
 
     let counter = 0;
 
+    // eslint-disable-next-line no-undef
     if (process.env.NODE_ENV === 'production') fetchData();
     else {
       setData(
@@ -58,9 +62,8 @@ export default function Shop() {
           return (
             <Product
               key={`product-${product.id}`}
-              imageUrl={product.imageUrl}
-              name={product.name}
-              price={product.price}
+              product={product}
+              addToBasket={addToBasket}
             />
           );
         })}
@@ -68,3 +71,7 @@ export default function Shop() {
     </div>
   );
 }
+
+Shop.propTypes = {
+  addToBasket: PropTypes.func,
+};

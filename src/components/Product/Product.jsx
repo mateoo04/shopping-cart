@@ -2,8 +2,10 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Product.module.css';
 
-export default function Product({ imageUrl, name, price }) {
+export default function Product({ product, addToBasket }) {
   const [quantity, setQuantity] = useState(1);
+
+  const { imageUrl, name, price } = product;
 
   return (
     <div className={styles.product}>
@@ -28,13 +30,17 @@ export default function Product({ imageUrl, name, price }) {
           +
         </button>
       </div>
-      <button className={styles.addToBasketButton}>ADD TO BASKET</button>
+      <button
+        className={styles.addToBasketButton}
+        onClick={() => addToBasket({ ...product, quantity })}
+      >
+        ADD TO BASKET
+      </button>
     </div>
   );
 }
 
 Product.propTypes = {
-  imageUrl: PropTypes.string,
-  name: PropTypes.string,
-  price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  product: PropTypes.object,
+  addToBasket: PropTypes.func,
 };

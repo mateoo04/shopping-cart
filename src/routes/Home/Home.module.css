@@ -31,22 +31,24 @@ h3 {
 .categoriesContainer {
   display: grid;
   gap: 14px;
+  margin: 20px 0;
 }
 
 .categoriesContainer > div {
-  border: 1px solid #000;
-  border-radius: 20px;
-  padding: 20px 10px;
+  box-shadow: 1px 1px 5px #d6d6d6;
+  padding: 18px;
+  border-radius: 28px;
   height: 180px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  opacity: 0.8;
+  opacity: 0.85;
+  text-align: center;
 }
 
 .categoriesContainer > div:hover {
   cursor: pointer;
-  box-shadow: 1px 2px 4px #cfcece;
+  box-shadow: 1px 2px 4px #b4b3b3;
 }
 
 .categoriesContainer img {

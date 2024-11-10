@@ -1,0 +1,42 @@
+.basket {
+  margin: 20px 30px;
+}
+
+.basketItemsTotal {
+  margin-top: 30px;
+  display: flex;
+  align-items: flex-start;
+  gap: 26px;
+  width: 100%;
+}
+
+.itemsContainer {
+  flex: 2;
+}
+
+.totalContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+}
+
+.totalTitle {
+  font-size: 1.8em;
+}
+
+.shopLink {
+  color: #da2570;
+}
+
+@media (min-width: 600px) {
+  .basketItemsTotal {
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 599px) {
+  .basketItemsTotal {
+    flex-direction: column;
+  }
+}

@@ -13,7 +13,7 @@ describe('Product component', () => {
     price: '189',
   };
 
-  it('renders product correctly', () => {
+  it('matches snapshot', () => {
     const { container } = render(
       <Product product={productJSON} addToBasket={() => {}} />
     );
@@ -25,20 +25,25 @@ describe('Product component', () => {
     render(<Product product={productJSON} addToBasket={() => {}} />);
 
     expect(screen.getByRole('heading', { level: 3 }).textContent).toMatch(
-      'Sony WH-10000'
+      productJSON.name
     );
   });
 
-  it('calls addToBasket when button is clicked', async () => {
-    const addToBasket = vi.fn();
+  it('calls updateQuantityInBasket() when button is clicked', async () => {
+    const updateQuantityInBasket = vi.fn();
     const user = userEvent.setup();
-    render(<Product product={productJSON} addToBasket={addToBasket} />);
+    render(
+      <Product
+        product={productJSON}
+        updateQuantityInBasket={updateQuantityInBasket}
+      />
+    );
 
     const addToBasketButton = screen.getByRole('button', {
       name: /add to basket/i,
     });
     await user.click(addToBasketButton);
 
-    expect(addToBasket).toHaveBeenCalled();
+    expect(updateQuantityInBasket).toHaveBeenCalled();
   });
 });

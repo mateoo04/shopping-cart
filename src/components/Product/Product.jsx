@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Product.module.css';
 
-export default function Product({ product, addToBasket }) {
+export default function Product({ product, updateQuantityInBasket }) {
   const [quantity, setQuantity] = useState(1);
 
   const { imageUrl, name, price } = product;
@@ -21,7 +21,7 @@ export default function Product({ product, addToBasket }) {
           value={quantity}
           onChange={(e) =>
             (parseInt(e.target.value) >= 0 &&
-              parseInt(e.target.value) < 99 &&
+              parseInt(e.target.value) <= 99 &&
               setQuantity(parseInt(e.target.value))) ||
             (e.target.value === '' && setQuantity(e.target.value))
           }
@@ -32,7 +32,7 @@ export default function Product({ product, addToBasket }) {
       </div>
       <button
         className={styles.addToBasketButton}
-        onClick={() => addToBasket({ ...product, quantity })}
+        onClick={() => updateQuantityInBasket(product, quantity)}
       >
         ADD TO BASKET
       </button>
@@ -42,5 +42,5 @@ export default function Product({ product, addToBasket }) {
 
 Product.propTypes = {
   product: PropTypes.object,
-  addToBasket: PropTypes.func,
+  updateQuantityInBasket: PropTypes.func,
 };

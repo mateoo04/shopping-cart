@@ -4,10 +4,8 @@ import styles from './Shop.module.css';
 import testImage from '../../assets/test-image.jpg';
 import PropTypes from 'prop-types';
 
-export default function Shop({ addToBasket }) {
+export default function Shop({ updateQuantityInBasket }) {
   const [data, setData] = useState([]);
-
-  console.log(data);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -63,7 +61,7 @@ export default function Shop({ addToBasket }) {
             <Product
               key={`product-${product.id}`}
               product={product}
-              addToBasket={addToBasket}
+              updateQuantityInBasket={updateQuantityInBasket}
             />
           );
         })}
@@ -73,5 +71,5 @@ export default function Shop({ addToBasket }) {
 }
 
 Shop.propTypes = {
-  addToBasket: PropTypes.func,
+  updateQuantityInBasket: PropTypes.func,
 };

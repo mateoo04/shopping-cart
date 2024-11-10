@@ -25,6 +25,12 @@ img {
   display: block;
 }
 
+button:hover,
+a:hover {
+  opacity: 0.85;
+  cursor: pointer;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   /* display: none; <- Crashes Chrome on hover */

@@ -9,18 +9,39 @@ import './App.css';
 function App() {
   const [basketItems, setBasketItems] = useState([]);
 
-  const addToBasket = (item) => {
+  const updateQuantityInBasket = (item, quantityDifference) => {
     const existingItem = basketItems.find(
       (element) => element.name === item.name
     );
 
     if (existingItem) {
-      existingItem.quantity += item.quantity;
+      if (parseInt(existingItem.quantity) + parseInt(quantityDifference) > 99) {
+        alert('Unfortunately, there are only 99 items in currently stock!');
+        existingItem.quantity = 99;
+      } else {
+        existingItem.quantity =
+          parseInt(existingItem.quantity) + parseInt(quantityDifference);
+      }
     } else {
-      setBasketItems([...basketItems, item]);
+      setBasketItems([
+        ...basketItems,
+        { ...item, quantity: quantityDifference },
+      ]);
     }
 
     console.log(basketItems);
+  };
+
+  const setQuantityInBasket = (item, quantity) => {
+    const existingItem = basketItems.find(
+      (element) => element.name === item.name
+    );
+
+    if (existingItem) existingItem.quantity = quantity;
+  };
+
+  const removeItemFromBasket = (selected) => {
+    setBasketItems(basketItems.filter((item) => item.name !== selected.name));
   };
 
   const router = createBrowserRouter([
@@ -29,8 +50,20 @@ function App() {
       element: <Root />,
       children: [
         { index: true, element: <Home /> },
-        { path: '/shop', element: <Shop addToBasket={addToBasket} /> },
-        { path: '/basket', element: <Basket /> },
+        {
+          path: '/shop',
+          element: <Shop updateQuantityInBasket={updateQuantityInBasket} />,
+        },
+        {
+          path: '/basket',
+          element: (
+            <Basket
+              items={basketItems}
+              setQuantityInBasket={setQuantityInBasket}
+              removeItemFromBasket={removeItemFromBasket}
+            />
+          ),
+        },
       ],
     },
   ]);

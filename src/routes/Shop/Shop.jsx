@@ -3,16 +3,25 @@ import Product from '../../components/Product/Product';
 import styles from './Shop.module.css';
 import testImage from '../../assets/test-image.jpg';
 import PropTypes from 'prop-types';
+import { useLocation } from 'react-router-dom';
 
 export default function Shop({ updateQuantityInBasket }) {
+  const location = useLocation();
+  const { category } = location.state || {};
+  console.log('category: ' + category);
+
+  const url = category
+    ? `https://fakestoreapi.in/api/products/category?limit=10&type=${category}`
+    : 'https://fakestoreapi.in/api/products?limit=10';
+
+  console.log(url);
+
   const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          'https://fakestoreapi.in/api/products?limit=10'
-        );
+        const response = await fetch(url);
         if (!response.ok) throw new Error('Failed to fetch data');
 
         const json = await response.json();
@@ -52,7 +61,8 @@ export default function Shop({ updateQuantityInBasket }) {
         }))
       );
     }
-  }, []);
+  }, [url]);
+
   return (
     <div className={styles.shop}>
       <div className={styles.productsContainer}>

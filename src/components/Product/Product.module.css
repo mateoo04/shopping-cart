@@ -5,10 +5,28 @@
   box-shadow: 1px 1px 5px #d6d6d6;
   padding: 18px;
   border-radius: 28px;
+  justify-content: space-between;
+}
+
+.productDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.product h3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  hyphens: auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .product img {
   align-self: center;
+  height: 50%;
+  object-fit: contain;
 }
 
 .quantityPicker {

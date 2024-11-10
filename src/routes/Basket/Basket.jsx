@@ -2,6 +2,7 @@ import BasketItem from '../../components/BasketItem/BasketItem';
 import PropTypes from 'prop-types';
 import styles from './Basket.module.css';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Basket({
   items,
@@ -40,9 +41,9 @@ export default function Basket({
           ) : (
             <p>
               Your shopping basket is empty.{' '}
-              <a className={styles.shopLink} href='/shop'>
+              <Link className={styles.shopLink} to='/shop'>
                 Click here to shop!
-              </a>
+              </Link>
             </p>
           )}
         </div>

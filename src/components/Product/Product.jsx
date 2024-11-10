@@ -9,9 +9,11 @@ export default function Product({ product, updateQuantityInBasket }) {
 
   return (
     <div className={styles.product}>
-      <img src={imageUrl} alt={name} />
-      <h3>{name}</h3>
-      <p>{`${price}€`}</p>
+      <div className={styles.productDetails}>
+        <img src={imageUrl} alt={name} />
+        <h3>{name}</h3>
+        <p>{`${price}€`}</p>
+      </div>
       <div className={styles.quantityPicker}>
         <button onClick={() => quantity > 0 && setQuantity(quantity - 1)}>
           -

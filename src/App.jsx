@@ -52,7 +52,9 @@ function App() {
         { index: true, element: <Home /> },
         {
           path: '/shop',
-          element: <Shop updateQuantityInBasket={updateQuantityInBasket} />,
+          element: (
+            <Shop updateQuantityInBasket={updateQuantityInBasket} state={{}} />
+          ),
         },
         {
           path: '/basket',

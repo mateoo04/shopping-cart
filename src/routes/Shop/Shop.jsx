@@ -4,15 +4,16 @@ import styles from './Shop.module.css';
 import testImage from '../../assets/test-image.jpg';
 import PropTypes from 'prop-types';
 import { Link, useParams } from 'react-router-dom';
+import classNames from 'classnames';
 
 export default function Shop({ updateQuantityInBasket }) {
   const { category } = useParams();
+  const [isLoading, setIsLoading] = useState(true);
+  const [imagesLoaded, setImagesLoaded] = useState(0);
 
   const url = category
     ? `https://fakestoreapi.in/api/products/category?limit=10&type=${category}`
     : 'https://fakestoreapi.in/api/products?limit=10';
-
-  console.log(url);
 
   const [data, setData] = useState([]);
 
@@ -58,8 +59,27 @@ export default function Shop({ updateQuantityInBasket }) {
           price: '99',
         }))
       );
+
+      setIsLoading(false);
     }
   }, [url]);
+
+  const handleImageLoad = () => {
+    setImagesLoaded((prev) => prev + 1);
+  };
+
+  useEffect(() => {
+    console.log(`data.length: ${data.length}, imagesLoaded: ${imagesLoaded}`);
+    if (data.length && imagesLoaded === data.length) {
+      setIsLoading(false);
+    } else if (!data.length) {
+      setIsLoading(true);
+    }
+
+    console.log('isLoading: ' + isLoading);
+  }, [imagesLoaded, data.length]);
+
+  useEffect(() => setImagesLoaded(0), [url]);
 
   return (
     <div className={styles.shop}>
@@ -67,44 +87,96 @@ export default function Shop({ updateQuantityInBasket }) {
         <h2>Categories</h2>
         <ul>
           <li>
-            <Link className={styles.categoryLink} to='/shop/tv'>
+            <Link
+              to='/shop'
+              className={classNames(styles.categoryLink, {
+                [styles.activeLink]: !category,
+              })}
+            >
+              All
+            </Link>
+          </li>
+          <li>
+            <Link
+              className={classNames(styles.categoryLink, {
+                [styles.activeLink]: category === 'tv',
+              })}
+              to='/shop/tv'
+            >
               TV
             </Link>
           </li>
           <li>
-            <Link className={styles.categoryLink} to='/shop/audio'>
+            <Link
+              className={classNames(styles.categoryLink, {
+                [styles.activeLink]: category === 'audio',
+              })}
+              to='/shop/audio'
+            >
               Audio
             </Link>
           </li>
           <li>
-            <Link className={styles.categoryLink} to='/shop/laptops'>
+            <Link
+              className={classNames(styles.categoryLink, {
+                [styles.activeLink]: category === 'laptops',
+              })}
+              to='/shop/laptop'
+            >
               Laptops
             </Link>
           </li>
           <li>
-            <Link className={styles.categoryLink} to='/shop/mobile'>
+            <Link
+              className={classNames(styles.categoryLink, {
+                [styles.activeLink]: category === 'mobile',
+              })}
+              to='/shop/mobile'
+            >
               Phones
             </Link>
           </li>
           <li>
-            <Link className={styles.categoryLink} to='/shop/gaming'>
+            <Link
+              className={classNames(styles.categoryLink, {
+                [styles.activeLink]: category === 'gaming',
+              })}
+              to='/shop/gaming'
+            >
               Gaming
             </Link>
           </li>
           <li>
-            <Link className={styles.categoryLink} to='/shop/appliances'>
+            <Link
+              className={classNames(styles.categoryLink, {
+                [styles.activeLink]: category === 'appliances',
+              })}
+              to='/shop/appliances'
+            >
               Appliances
             </Link>
           </li>
         </ul>
       </aside>
-      <div className={styles.productsContainer}>
+
+      <div
+        style={{ display: isLoading ? 'block' : 'none' }}
+        className={styles.loaderContainer}
+      >
+        <div className={styles.loader}></div>
+      </div>
+
+      <div
+        style={{ display: isLoading ? 'none' : 'grid' }}
+        className={styles.productsContainer}
+      >
         {data.map((product) => {
           return (
             <Product
               key={`product-${product.id}`}
               product={product}
               updateQuantityInBasket={updateQuantityInBasket}
+              onImageLoad={handleImageLoad}
             />
           );
         })}

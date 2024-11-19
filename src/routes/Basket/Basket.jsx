@@ -50,7 +50,7 @@ export default function Basket({
         {items.length !== 0 ? (
           <div className={styles.totalContainer}>
             <h4 className={styles.totalTitle}>Total</h4>
-            <p>{`${totalPrice}€`}</p>
+            <p>{`${totalPrice} €`}</p>
           </div>
         ) : (
           ''

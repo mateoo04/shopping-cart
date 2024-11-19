@@ -2,7 +2,11 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Product.module.css';
 
-export default function Product({ product, updateQuantityInBasket }) {
+export default function Product({
+  product,
+  updateQuantityInBasket,
+  onImageLoad,
+}) {
   const [quantity, setQuantity] = useState(1);
 
   const { imageUrl, name, price } = product;
@@ -10,9 +14,9 @@ export default function Product({ product, updateQuantityInBasket }) {
   return (
     <div className={styles.product}>
       <div className={styles.productDetails}>
-        <img src={imageUrl} alt={name} />
+        <img src={imageUrl} alt={name} onLoad={onImageLoad} />
         <h3>{name}</h3>
-        <p>{`${price}€`}</p>
+        <p>{`${price} €`}</p>
       </div>
       <div className={styles.quantityPicker}>
         <button onClick={() => quantity > 0 && setQuantity(quantity - 1)}>
@@ -25,7 +29,8 @@ export default function Product({ product, updateQuantityInBasket }) {
             (parseInt(e.target.value) >= 0 &&
               parseInt(e.target.value) <= 99 &&
               setQuantity(parseInt(e.target.value))) ||
-            (e.target.value === '' && setQuantity(e.target.value))
+            (e.target.value === '' && setQuantity(e.target.value)) ||
+            (parseInt(e.target.value) > 99 && setQuantity(99))
           }
         />
         <button onClick={() => quantity < 99 && setQuantity(quantity + 1)}>
@@ -45,4 +50,5 @@ export default function Product({ product, updateQuantityInBasket }) {
 Product.propTypes = {
   product: PropTypes.object,
   updateQuantityInBasket: PropTypes.func,
+  onImageLoad: PropTypes.func,
 };

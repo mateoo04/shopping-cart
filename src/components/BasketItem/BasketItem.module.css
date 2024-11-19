@@ -1,7 +1,7 @@
 .basketItem {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 14px;
   box-shadow: 1px 1px 5px #d6d6d6;
   padding: 18px;
   border-radius: 28px;

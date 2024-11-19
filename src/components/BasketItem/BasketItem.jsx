@@ -46,7 +46,7 @@ export default function BasketItem({
       <div className={styles.information}>
         <div className={styles.detailsContainer}>
           <h4>{name}</h4>
-          <p>{`${price}€`}</p>
+          <p>{`${price} €`}</p>
         </div>
         <div className={styles.buttonsContainer}>
           <div className={styles.quantityPicker}>
@@ -55,9 +55,11 @@ export default function BasketItem({
               type='number'
               value={quantity}
               onChange={(e) =>
-                parseInt(e.target.value) > 0 &&
-                parseInt(e.target.value) < 99 &&
-                setCustomQuantity(e.target.value)
+                (parseInt(e.target.value) > 0 &&
+                  parseInt(e.target.value) <= 99 &&
+                  setCustomQuantity(e.target.value)) ||
+                (e.target.value === '' && setQuantity(e.target.value)) ||
+                (parseInt(e.target.value) > 99 && setQuantity(99))
               }
             />
             <button onClick={incrementQuantity}>+</button>

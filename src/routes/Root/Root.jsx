@@ -4,7 +4,7 @@ import styles from './Root.module.css';
 
 export default function Root() {
   return (
-    <>
+    <div className={styles.root}>
       <nav className={styles.navigation}>
         <h1>Surge</h1>
         <ul>
@@ -29,7 +29,9 @@ export default function Root() {
           </Link>
         </div>
       </nav>
-      <Outlet />
-    </>
+      <div className={styles.outletWrapper}>
+        <Outlet />
+      </div>
+    </div>
   );
 }

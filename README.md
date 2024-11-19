@@ -1,8 +1,16 @@
-# React + Vite
+# Shopping Cart
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A shopping website where users can browse products, filter by categories, and manage their shopping basket. The products are dynamically fetched from an API and displayed with a user-friendly interface. The application includes well-tested React components to ensure reliability.
 
-Currently, two official plugins are available:
+Technologies used:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Frontend: HTML, CSS, JavaScript
+- Frameworks/Libraries:
+  - React (component-based development)
+  - Vite (fast setup and simpler development of React apps)
+  - React Router (navigating between pages)
+- Development Tools:
+  - ESLint (code linting and maintaining consistent style)
+- Testing:
+  - Jest (unit tests)
+  - React Testing Library (DOM interaction tests)

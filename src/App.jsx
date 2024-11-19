@@ -16,7 +16,7 @@ function App() {
 
     if (existingItem) {
       if (parseInt(existingItem.quantity) + parseInt(quantityDifference) > 99) {
-        alert('Unfortunately, there are only 99 items in currently stock!');
+        alert('Unfortunately, there are only 99 items currently in stock!');
         existingItem.quantity = 99;
       } else {
         existingItem.quantity =
@@ -50,6 +50,12 @@ function App() {
       element: <Root />,
       children: [
         { index: true, element: <Home /> },
+        {
+          path: '/shop/:category',
+          element: (
+            <Shop updateQuantityInBasket={updateQuantityInBasket} state={{}} />
+          ),
+        },
         {
           path: '/shop',
           element: (

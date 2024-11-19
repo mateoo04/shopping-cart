@@ -3,12 +3,10 @@ import Product from '../../components/Product/Product';
 import styles from './Shop.module.css';
 import testImage from '../../assets/test-image.jpg';
 import PropTypes from 'prop-types';
-import { useLocation } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 export default function Shop({ updateQuantityInBasket }) {
-  const location = useLocation();
-  const { category } = location.state || {};
-  console.log('category: ' + category);
+  const { category } = useParams();
 
   const url = category
     ? `https://fakestoreapi.in/api/products/category?limit=10&type=${category}`
@@ -65,6 +63,41 @@ export default function Shop({ updateQuantityInBasket }) {
 
   return (
     <div className={styles.shop}>
+      <aside className={styles.categoriesSidebar}>
+        <h2>Categories</h2>
+        <ul>
+          <li>
+            <Link className={styles.categoryLink} to='/shop/tv'>
+              TV
+            </Link>
+          </li>
+          <li>
+            <Link className={styles.categoryLink} to='/shop/audio'>
+              Audio
+            </Link>
+          </li>
+          <li>
+            <Link className={styles.categoryLink} to='/shop/laptops'>
+              Laptops
+            </Link>
+          </li>
+          <li>
+            <Link className={styles.categoryLink} to='/shop/mobile'>
+              Phones
+            </Link>
+          </li>
+          <li>
+            <Link className={styles.categoryLink} to='/shop/gaming'>
+              Gaming
+            </Link>
+          </li>
+          <li>
+            <Link className={styles.categoryLink} to='/shop/appliances'>
+              Appliances
+            </Link>
+          </li>
+        </ul>
+      </aside>
       <div className={styles.productsContainer}>
         {data.map((product) => {
           return (

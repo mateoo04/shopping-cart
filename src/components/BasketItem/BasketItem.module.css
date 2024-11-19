@@ -44,8 +44,17 @@
   text-align: center;
 }
 
-.quantityPicker > * {
-  padding: 8px 10px;
+.quantityPicker {
+  height: 35px;
+  display: flex;
+}
+
+.quantityPicker button {
+  flex: 1;
+}
+
+.quantityPicker input {
+  flex: 2;
 }
 
 .removeFromBasketButton {
@@ -53,7 +62,7 @@
   padding: 8px 20px;
 }
 
-@media (min-width: 700px) {
+@media (min-width: 800px) {
   .buttonsContainer {
     flex-direction: row;
   }
@@ -65,7 +74,7 @@
   }
 }
 
-@media (max-width: 699px) {
+@media (max-width: 799px) {
   .buttonsContainer {
     flex-direction: column;
   }

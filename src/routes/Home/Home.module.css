@@ -34,7 +34,7 @@ h3 {
   margin: 20px 0;
 }
 
-.categoriesContainer > div {
+.categoriesContainer > * {
   box-shadow: 1px 1px 5px #d6d6d6;
   padding: 18px;
   border-radius: 28px;
@@ -44,9 +44,11 @@ h3 {
   justify-content: space-between;
   opacity: 0.85;
   text-align: center;
+  text-decoration: none;
+  color: #000;
 }
 
-.categoriesContainer > div:hover {
+.categoriesContainer > *:hover {
   cursor: pointer;
   box-shadow: 1px 2px 4px #b4b3b3;
 }

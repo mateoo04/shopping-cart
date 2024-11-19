@@ -5,6 +5,34 @@
   gap: 20px;
 }
 
+.categoriesSidebar {
+  padding-left: 20px;
+}
+
+.categoriesSidebar ul {
+  padding-left: 14px;
+}
+
+.categoriesSidebar li {
+  list-style-type: none;
+  padding: 2px 0;
+}
+
+.categoryLink {
+  text-decoration: none;
+  color: #3a3a3a;
+}
+
 .productsContainer > * > img {
   max-width: 200px;
+}
+
+@media (min-width: 700px) {
+  .shop {
+    display: flex;
+  }
+
+  .categoriesSidebar {
+    width: 200px;
+  }
 }

@@ -28,8 +28,6 @@ function App() {
         { ...item, quantity: quantityDifference },
       ]);
     }
-
-    console.log(basketItems);
   };
 
   const setQuantityInBasket = (item, quantity) => {

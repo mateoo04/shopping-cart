@@ -69,15 +69,12 @@ export default function Shop({ updateQuantityInBasket }) {
   };
 
   useEffect(() => {
-    console.log(`data.length: ${data.length}, imagesLoaded: ${imagesLoaded}`);
     if (data.length && imagesLoaded === data.length) {
       setIsLoading(false);
-    } else if (!data.length) {
+    } else {
       setIsLoading(true);
     }
-
-    console.log('isLoading: ' + isLoading);
-  }, [imagesLoaded, data.length]);
+  }, [imagesLoaded, data]);
 
   useEffect(() => setImagesLoaded(0), [url]);
 

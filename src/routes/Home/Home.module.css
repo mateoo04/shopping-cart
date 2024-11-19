@@ -64,8 +64,15 @@ h3 {
     grid-template-columns: repeat(6, 160px);
   }
 }
-@media (max-width: 1099px) {
+
+@media (min-width: 700px) and (max-width: 1099px) {
   .categoriesContainer {
     grid-template-columns: repeat(3, 160px);
+  }
+}
+
+@media (max-width: 699px) {
+  .categoriesContainer {
+    grid-template-columns: 100%;
   }
 }

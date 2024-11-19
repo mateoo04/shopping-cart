@@ -42,4 +42,7 @@
   .basketItemsTotal {
     flex-direction: column;
   }
+  .totalContainer {
+    width: 100%;
+  }
 }

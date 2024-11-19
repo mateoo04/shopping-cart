@@ -19,9 +19,15 @@ export default function Root() {
             </Link>
           </li>
         </ul>
-        <Link to={'basket'}>
-          <img className={styles.basketIcon} src={ShoppingBasketIcon} alt='' />
-        </Link>
+        <div className={styles.basketIconContainer}>
+          <Link to={'basket'}>
+            <img
+              className={styles.basketIcon}
+              src={ShoppingBasketIcon}
+              alt=''
+            />
+          </Link>
+        </div>
       </nav>
       <Outlet />
     </>
